@@ -1,0 +1,1393 @@
+31A:~/Programming/Python/socket/hangman$ python3 -m pdb client.py 9995
+> /home/alex/Programming/Python/socket/hangman/client.py(1)<module>()
+-> import socket, sys
+(Pdb) n
+> /home/alex/Programming/Python/socket/hangman/client.py(3)<module>()
+-> HOST = '192.168.0.13'
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(4)<module>()
+-> PORT = int(sys.argv[1])
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(6)<module>()
+-> s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(7)<module>()
+-> s.connect((HOST, PORT))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+....
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+e
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+      ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/     ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+/|    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+a
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+/|    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+ea..
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(19)<module>()
+-> print(message)
+(Pdb) 
+-GAME OVER!
+
+> /home/alex/Programming/Python/socket/hangman/client.py(20)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+Play again? [y/n]
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+y
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+..
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+e
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) x
+*** NameError: name 'x' is not defined
+(Pdb) 
+*** NameError: name 'x' is not defined
+(Pdb) n
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+      ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/     ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+h
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(19)<module>()
+-> print(message)
+(Pdb) 
+-YOU WON!
+
+> /home/alex/Programming/Python/socket/hangman/client.py(20)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+Play again? [y/n]
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+y
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+.........
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+b
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) x
+*** NameError: name 'x' is not defined
+(Pdb) n
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) x
+*** NameError: name 'x' is not defined
+(Pdb) n
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+      ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/     ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+/|    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+x
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(19)<module>()
+-> print(message)
+(Pdb) 
+-GAME OVER!
+
+> /home/alex/Programming/Python/socket/hangman/client.py(20)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+Play again? [y/n]
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+y
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+.....
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+h
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(30)<module>()
+-> if guessToSend.isalpha() and len(guessToSend) == 1:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(31)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(33)<module>()
+-> s.send(guessToSend.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(10)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(11)<module>()
+-> message = s.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(13)<module>()
+-> if (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(15)<module>()
+-> elif (message == 'Play again?'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(18)<module>()
+-> if message[0] == '-':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(21)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+h....
+> /home/alex/Programming/Python/socket/hangman/client.py(23)<module>()
+-> print(f"[Enter a letter, or 'exit' to quit]:")
+(Pdb) 
+[Enter a letter, or 'exit' to quit]:
+> /home/alex/Programming/Python/socket/hangman/client.py(24)<module>()
+-> guessToSend = ''
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(25)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(26)<module>()
+-> guessToSend = input()
+(Pdb) 
+exit
+> /home/alex/Programming/Python/socket/hangman/client.py(28)<module>()
+-> if guessToSend == 'exit' or (message == 'Play again?' and guessToSend != 'y'):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/client.py(29)<module>()
+-> sys.exit(0)
+(Pdb) 
+SystemExit: 0
+> /home/alex/Programming/Python/socket/hangman/client.py(29)<module>()
+-> sys.exit(0)
+(Pdb) 
+--Return--
+> /home/alex/Programming/Python/socket/hangman/client.py(29)<module>()->None
+-> sys.exit(0)
+(Pdb) 
+SystemExit: 0
+> <string>(1)<module>()->None
+(Pdb) 
+--Return--
+> <string>(1)<module>()->None
+(Pdb) 
+The program exited via sys.exit(). Exit status: 0
+> /home/alex/Programming/Python/socket/hangman/client.py(1)<module>()
+-> import socket, sys
+(Pdb) sys.exitsys.exitsys.exitsys.exitsys.exitsys.exitsys.exitsys.exitsys.exitsys.exitsys.exitsys.exit

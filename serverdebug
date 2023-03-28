@@ -1,0 +1,1230 @@
+alex@UX331A:~/Programming/Python/socket/hangman$ python3 -m pdb server.py 9995
+> /home/alex/Programming/Python/socket/hangman/server.py(1)<module>()
+-> import socket, sys
+(Pdb) n
+> /home/alex/Programming/Python/socket/hangman/server.py(3)<module>()
+-> HOST = '192.168.0.13'
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(4)<module>()
+-> PORT = int(sys.argv[1])
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(7)<module>()
+-> server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(10)<module>()
+-> server.bind((HOST, PORT))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(13)<module>()
+-> server.listen(5)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(16)<module>()
+-> incorrectGuesses = 0
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(17)<module>()
+-> maxGuesses = 6
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(19)<module>()
+-> stages = [
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(71)<module>()
+-> def uncover(word, coveredWord, letter):
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(94)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(96)<module>()
+-> client, address = server.accept()
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(99)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(100)<module>()
+-> print('Select the word for the other player to guess:')
+(Pdb) 
+Select the word for the other player to guess:
+> /home/alex/Programming/Python/socket/hangman/server.py(101)<module>()
+-> incorrectGuesses = 0
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(102)<module>()
+-> word = str(input())
+(Pdb) 
+easy
+> /home/alex/Programming/Python/socket/hangman/server.py(103)<module>()
+-> coveredWord = '.' * len(word)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) n
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+....
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a e?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(140)<module>()
+-> coveredWord = uncover(word, coveredWord, guess)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 6 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 5 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 4 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+      ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 3 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/     ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 2 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 1 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+/|    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+e...
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a a?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(140)<module>()
+-> coveredWord = uncover(word, coveredWord, guess)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 1 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+/|    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+ea..
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 0 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(117)<module>()
+-> client.send('-GAME OVER!\n'.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(118)<module>()
+-> print('Game over - guesser ran out of guesses!')
+(Pdb) 
+Game over - guesser ran out of guesses!
+> /home/alex/Programming/Python/socket/hangman/server.py(119)<module>()
+-> word = 'testwordshouldneverbeseen'
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(120)<module>()
+-> incorrectGuesses = 0
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(122)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(148)<module>()
+-> client.send('Play again? [y/n]'.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(150)<module>()
+-> playAgain = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(152)<module>()
+-> if playAgain != 'y':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(99)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(100)<module>()
+-> print('Select the word for the other player to guess:')
+(Pdb) 
+Select the word for the other player to guess:
+> /home/alex/Programming/Python/socket/hangman/server.py(101)<module>()
+-> incorrectGuesses = 0
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(102)<module>()
+-> word = str(input())
+(Pdb) 
+he
+> /home/alex/Programming/Python/socket/hangman/server.py(103)<module>()
+-> coveredWord = '.' * len(word)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+..
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a e?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(140)<module>()
+-> coveredWord = uncover(word, coveredWord, guess)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 6 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 5 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 4 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+      ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 3 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/     ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+
+
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 2 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+.e
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a h?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(140)<module>()
+-> coveredWord = uncover(word, coveredWord, guess)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 2 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(109)<module>()
+-> client.send('-YOU WON!\n'.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(110)<module>()
+-> print('Guesser won!')
+(Pdb) 
+Guesser won!
+> /home/alex/Programming/Python/socket/hangman/server.py(111)<module>()
+-> word = 'testwordshouldneverbeseen'
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(112)<module>()
+-> incorrectGuesses = 0
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(113)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(148)<module>()
+-> client.send('Play again? [y/n]'.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(150)<module>()
+-> playAgain = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(152)<module>()
+-> if playAgain != 'y':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(99)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(100)<module>()
+-> print('Select the word for the other player to guess:')
+(Pdb) 
+Select the word for the other player to guess:
+> /home/alex/Programming/Python/socket/hangman/server.py(101)<module>()
+-> incorrectGuesses = 0
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(102)<module>()
+-> word = str(input())
+(Pdb) 
+beautiful
+> /home/alex/Programming/Python/socket/hangman/server.py(103)<module>()
+-> coveredWord = '.' * len(word)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+.........
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a b?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(140)<module>()
+-> coveredWord = uncover(word, coveredWord, guess)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 6 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) x
+*** NameError: name 'x' is not defined
+(Pdb) 
+*** NameError: name 'x' is not defined
+(Pdb) n
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 5 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 4 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+      ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 3 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/     ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 2 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+ |    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 1 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+ O    ║
+/|    ║
+/ \   ║
+╦╦╦╦╦╦╢
+
+b........
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a x?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(142)<module>()
+-> incorrectGuesses += 1
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 0 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(117)<module>()
+-> client.send('-GAME OVER!\n'.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(118)<module>()
+-> print('Game over - guesser ran out of guesses!')
+(Pdb) 
+Game over - guesser ran out of guesses!
+> /home/alex/Programming/Python/socket/hangman/server.py(119)<module>()
+-> word = 'testwordshouldneverbeseen'
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(120)<module>()
+-> incorrectGuesses = 0
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(122)<module>()
+-> break
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(148)<module>()
+-> client.send('Play again? [y/n]'.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(150)<module>()
+-> playAgain = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(152)<module>()
+-> if playAgain != 'y':
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(99)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(100)<module>()
+-> print('Select the word for the other player to guess:')
+(Pdb) 
+Select the word for the other player to guess:
+> /home/alex/Programming/Python/socket/hangman/server.py(101)<module>()
+-> incorrectGuesses = 0
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(102)<module>()
+-> word = str(input())
+(Pdb) 
+hello
+> /home/alex/Programming/Python/socket/hangman/server.py(103)<module>()
+-> coveredWord = '.' * len(word)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+.....
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a h?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(140)<module>()
+-> coveredWord = uncover(word, coveredWord, guess)
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(146)<module>()
+-> print(f'The player has {maxGuesses - incorrectGuesses} guesses left.')
+(Pdb) 
+The player has 6 guesses left.
+> /home/alex/Programming/Python/socket/hangman/server.py(106)<module>()
+-> while True:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(108)<module>()
+-> if coveredWord == word:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(116)<module>()
+-> if maxGuesses == incorrectGuesses:
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(126)<module>()
+-> message = stages[incorrectGuesses] + '\n' + coveredWord
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(128)<module>()
+-> print(message)
+(Pdb) 
+   
+ ┌─═══╗
+      ║
+      ║
+      ║
+╦╦╦╦╦╦╢
+
+h....
+> /home/alex/Programming/Python/socket/hangman/server.py(131)<module>()
+-> client.send(message.encode('utf-8'))
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(134)<module>()
+-> guess = client.recv(1024).decode('utf-8')
+(Pdb) 
+> /home/alex/Programming/Python/socket/hangman/server.py(136)<module>()
+-> print(f'Player asks: Is there a {guess}?')
+(Pdb) 
+Player asks: Is there a ?
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+IndexError: string index out of range
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()
+-> if guess[0] in word:
+(Pdb) 
+--Return--
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()->None
+-> if guess[0] in word:
+(Pdb) 
+IndexError: string index out of range
+> <string>(1)<module>()->None
+(Pdb) 
+--Return--
+> <string>(1)<module>()->None
+(Pdb) 
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/pdb.py", line 1726, in main
+    pdb._runscript(mainpyfile)
+  File "/usr/lib/python3.10/pdb.py", line 1586, in _runscript
+    self.run(statement)
+  File "/usr/lib/python3.10/bdb.py", line 597, in run
+    exec(cmd, globals, locals)
+  File "<string>", line 1, in <module>
+  File "/home/alex/Programming/Python/socket/hangman/server.py", line 139, in <module>
+    if guess[0] in word:
+IndexError: string index out of range
+Uncaught exception. Entering post mortem debugging
+Running 'cont' or 'step' will restart the program
+> /home/alex/Programming/Python/socket/hangman/server.py(139)<module>()->None
+-> if guess[0] in word:
+(Pdb) 
+Post mortem debugger finished. The /home/alex/Programming/Python/socket/hangman/server.py will be restarted
+> /home/alex/Programming/Python/socket/hangman/server.py(1)<module>()
+-> import socket, sys
+(Pdb) 
